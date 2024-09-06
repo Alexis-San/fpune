@@ -1,118 +1,54 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {ScrollView,StyleSheet} from 'react-native';
+//Componentes que se van sumando a mi pantalla principal
+//import BasicComponents from './src/components/BasicComponents';
+import TextComponents from './src/components/TextComponents';
+import TextInputComponents from './src/components/TextInputComponents';
+import ListNotasComponents from './src/components/ListNotasComponents';
+import Home from './src/react-native-elements/Home';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AvatarBasic from './src/react-native-elements/AvatarBasic';
+import BadgeBasic from './src/react-native-elements/BadgeBasic';
+import CardBasic from './src/react-native-elements/CardBasic';
+import TabBasic from './src/react-native-elements/TabBasic';
+import PropsEjemplo from './src/navegacion/PropsEjemplo';
+import AxiosEjemplo from './src/navegacion/AxiosEjemplo';
+import AsyncStorageEjemplo from './src/navegacion/AsyncStorageEjemplo';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+//import Componente01 from './src/simulacro-parcial/Componente01';
+//import Props02 from './src/simulacro-parcial/Props02';
+//import Axios03 from './src/simulacro-parcial/Axios03';
+//import AsyncStorage04 from './src/simulacro-parcial/AsyncStorage04';
+//parcial
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import ComponenteParcial01 from './src/primera-parcial/ComponenteParcial01';
+import AxiosParcial03 from './src/primera-parcial/AxiosParcial03';
+import PropsParcial02 from './src/primera-parcial/PropsParcial02';
+import AsyncStorageParcial04 from './src/primera-parcial/AsyncStorageParcial04';
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+
+const Stack = createNativeStackNavigator();
+
+const App = () =>{
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    
+
+       <NavigationContainer>
+      <Stack.Navigator initialRouteName="ComponenteParcial01">
+        <Stack.Screen name="ComponenteParcial01" component={ComponenteParcial01} />
+        <Stack.Screen name="PropsParcial02" component={PropsParcial02} />
+        <Stack.Screen name="AxiosParcial03" component={AxiosParcial03} />
+        <Stack.Screen name="AsyncStorageParcial04" component={AsyncStorageParcial04} />
+
+
+      </Stack.Navigator>
+    </NavigationContainer>
+
+
   );
 }
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
 });
 
 export default App;
